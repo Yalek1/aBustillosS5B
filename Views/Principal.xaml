@@ -3,64 +3,112 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="aBustillosS5B.Views.Principal"
              Title="Principal">
-    <VerticalStackLayout>
-        <Label 
-            Text="Semana 5: SQLITE"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout Padding="25"
+                     Margin="25"
+                     BackgroundColor="#000B58">
+            <Label 
+        Text="Semana 5: SQLITE"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        TextColor="#FFF4B7"/>
 
-        <Entry x:Name="txtName"
-               Placeholder="Ingrese el nombre"/>
+            <Entry x:Name="txtName"
+           Placeholder="Ingrese el nombre"
+           BackgroundColor="#006A67"
+           TextColor="#FFF4B7"/>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
 
-            <Button x:Name="btnAñadir"
-                    Text="Agregar Persona"
-                    Clicked="btnAñadir_Clicked"
-                    Grid.Row="0"
-                    Grid.Column="0"/>
+                <Button x:Name="btnAñadir"
+                Text="Agregar Persona"
+                Clicked="btnAñadir_Clicked"
+                Grid.Row="0"
+                Grid.Column="1"
+                BackgroundColor="#003161"
+                TextColor="#FFF4B7"/>
 
-            <Label x:Name="lblStatus"
-                   TextColor="Red"
-                   Grid.Row="1"
-                   Grid.Column="0"/>
+                <Label x:Name="lblStatus"
+               TextColor="Red"
+               Grid.Row="1"
+               Grid.Column="1"/>
 
-            <Button x:Name="btnMostrar"
-                    Text="Listar Persona"
-                    Clicked="btnMostrar_Clicked"
-                    Grid.Row="2"
-                    Grid.Column="0"/>
+                <Button x:Name="btnMostrar"
+                Text="Listar Persona"
+                Clicked="btnMostrar_Clicked"
+                Grid.Row="2"
+                Grid.Column="1"
+                BackgroundColor="#003161"
+                TextColor="#FFF4B7"/>
 
-            <CollectionView x:Name="listapersonas"
-                            Grid.Row="3"
-                            Grid.Column="0">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+                <Button x:Name="btnActualizar"
+                ImageSource="iconupdate.png"
+                Clicked="btnActualizar_Clicked"
+                WidthRequest="30"
+                HeightRequest="30"
+                Grid.Row="2"
+                Grid.Column="0"
+                BackgroundColor="#003161"/>
 
-                            <Label Text="{Binding Id}" Grid.Column="0"/>
-                            <Label Text="{Binding Name}" Grid.Column="1"/>
+                <Button x:Name="btnEliminar"
+                ImageSource="icondelete.png"
+                Clicked="btnEliminar_Clicked"
+                WidthRequest="30"
+                HeightRequest="30"
+                Grid.Row="2"
+                Grid.Column="2"
+                BackgroundColor="#003161"/>
 
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                <Entry x:Name="txtUpdateName"
+               Placeholder="Nuevo nombre para actualizar"
+               Grid.Row="3"
+               Grid.Column="1"
+               BackgroundColor="#006A67"
+               TextColor="#FFF4B7"/>
 
-        </Grid>
-        
-    </VerticalStackLayout>
+                <CollectionView x:Name="listapersonas"
+                        Grid.Row="4"
+                        Grid.Column="1">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Id}" Grid.Column="0" TextColor="#FFF4B7" HorizontalOptions="Center"/>
+                                <Label Text="{Binding Name}" Grid.Column="1" TextColor="#FFF4B7" HorizontalOptions="Center"/>
+
+                                <Button x:Name="btnSeleccionar"
+                                ImageSource="iconselect.png"
+                                Grid.Column="2"
+                                Clicked="btnSeleccionar_Clicked"
+                                WidthRequest="30"
+                                HeightRequest="30"
+                                BackgroundColor="#003161"
+                                CommandParameter="{Binding .}"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

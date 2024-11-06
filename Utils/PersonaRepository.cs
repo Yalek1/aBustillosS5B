@@ -62,6 +62,43 @@ namespace aBustillosS5B.Utils
             return personas;
         }
 
-        //Update y Delete
+        //Metodo Update de Persona
+        public void UpdatePerson(int id, string newName)
+        {
+            try
+            {
+                Init();
+                Persona person = conn.Find<Persona>(id);
+                if (person == null)
+                    throw new Exception("Persona no encontrada");
+
+                person.Name = newName;
+                conn.Update(person);
+                status = string.Format("Persona Actualizada correctamente");
+            }
+            catch (Exception)
+            {
+                status = string.Format("Error al Actualizar la Persona");
+            }
+        }
+
+        //Metodo Delete de Persona
+        public void DeletePerson(int id)
+        {
+            try
+            {
+                Init();
+                Persona person = conn.Find<Persona>(id);
+                if (person == null) 
+                    throw new Exception("Persona no encontrada");
+
+                conn.Delete(person);
+                status = string.Format("Persona Eliminada correctamente");
+            }
+            catch (Exception)
+            {
+                status = string.Format("Error al Eliminar la Persona");
+            }
+        }
     }
 }
